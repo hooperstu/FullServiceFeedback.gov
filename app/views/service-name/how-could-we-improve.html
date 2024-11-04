@@ -1,0 +1,45 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  How could we improve? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        How could we improve?
+      </h1>
+
+      <form class="form" action="/how-could-we-improve" method="post">
+
+        {{ govukTextarea({
+          id: "improvement-suggestions",
+          name: "improvement-suggestions",
+          label: {
+            text: "Please provide your suggestions for improvement"
+          },
+          hint: {
+            text: "Your feedback will help us improve our service."
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

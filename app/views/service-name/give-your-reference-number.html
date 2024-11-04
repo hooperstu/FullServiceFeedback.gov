@@ -1,0 +1,49 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Give your reference number (optional)
+      </h1>
+
+      <form class="form" action="/give-your-reference-number" method="post">
+
+        <p>
+          If you have received an invitation to provide feedback from HMRC, you can use the reference number to provide feedback.
+        </p>
+
+        {{ govukInput({
+          id: "reference-number",
+          name: "reference-number",
+          label: {
+            text: "Reference number"
+          },
+          hint: {
+            text: "This is optional"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

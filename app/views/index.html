@@ -1,20 +1,63 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName="Home" %}
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
 
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+      <h1 class="govuk-heading-xl">
+        {{ serviceName }}
+      </h1>
 
-    <h1 class="govuk-heading-xl">
-      {{ serviceName }}
-    </h1>
+      <h2 class="govuk-heading-m">Your feedback matters</h2>
 
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+      <p>Help us improve our bereavement services at HMRC. By sharing your experience, 
+        you’ll help us understand what we’re doing well and where we can improve, 
+        so we can better support others during difficult times.</p>
+
+      <h2 class="govuk-heading-m">Who can provide feedback</h2>
+
+      <p>This service is open to anyone who has interacted with HMRC’s bereavement services. This includes:</p> 
+      <ul class="govuk-list govuk-list--bullet" style="list-style-type: disc;">
+        <li>Family members or friends of the deceased</li>
+        <li>Executors or administrators of the estate</li>
+        <li>Legal or financial representatives of the bereaved</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">What to expect</h2>
+      <p>This survey should take around 5 minutes to complete. Your feedback is anonymous, and your responses will only be used to improve HMRC’s services.</p>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "/give-your-reference-number",
+        isStartButton: true
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Before you start
+      </h2>
+
+      <p>
+        If you have received an invitation to provide feedback from HMRC, you can use the reference number to provide feedback.
+      </p>
+
+      <p>
+        The online service is also <a href="#">available in Welsh (ar gael yn Gymraeg)</a>.
+      </p>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+    </div>
   </div>
-</div>
 
 {% endblock %}

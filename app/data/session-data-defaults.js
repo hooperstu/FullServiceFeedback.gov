@@ -1,5 +1,9 @@
 module.exports = {
-
-  // Insert values here
-
+  'reference-number': '',
+  'satisfaction': '',
+  'ease': '',
+  'improvement-suggestions': '',
+  'contact-preference': '',
+  'phone': '',
+  'email': ''
 }

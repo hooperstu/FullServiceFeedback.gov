@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  How easy was it to get the help you needed? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="/how-easy-was-it" method="post">
+
+        {{ govukRadios({
+          idPrefix: "ease",
+          name: "ease",
+          fieldset: {
+            legend: {
+              text: "How easy was it to get the help you needed?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "very-difficult",
+              text: "Very Difficult"
+            },
+            {
+              value: "difficult",
+              text: "Difficult"
+            },
+            {
+              value: "neutral",
+              text: "Neutral"
+            },
+            {
+              value: "easy",
+              text: "Easy"
+            },
+            {
+              value: "very-easy",
+              text: "Very Easy"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

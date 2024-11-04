@@ -1,0 +1,103 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your feedback answers – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Check your feedback answers
+      </h1>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Reference number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['reference-number'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How satisfied are you with the service you received?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['satisfaction'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How easy was it to get the help you needed?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ease'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How could we improve?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['improvement-suggestions'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Would you like to be contacted by one of our researchers about your experience?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['contact-preference'] }}
+          </dd>
+        </div>
+        {% if data['contact-preference'] == 'yes' %}
+          {% if data['email'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Email
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['email'] }}
+              </dd>
+            </div>
+          {% endif %}
+          {% if data['phone'] %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Phone
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['phone'] }}
+              </dd>
+            </div>
+          {% endif %}
+        {% endif %}
+      </dl>
+
+      <h2 class="govuk-heading-m">
+        Now send your application
+      </h2>
+
+      <p>
+        By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.
+      </p>
+
+      <form action="/confirmation" method="post" novalidate>
+        {{ govukButton({
+          text: "Accept and send"
+        }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
