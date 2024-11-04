@@ -22,11 +22,3 @@ These instructions will help you set up the project on your local machine for de
 
 - [Node.js](https://nodejs.org/) (version 12 or higher)
 - [npm](https://www.npmjs.com/) (Node package manager)
-
-### Installation
-
-1. **Clone the repository:**
-
-   ```sh
-   git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
-   cd YOUR-REPO-NAME
