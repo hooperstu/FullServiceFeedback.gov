@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Check your feedback answers – {{ serviceName }} – GOV.UK Prototype Kit
+  How would you like us to contact you? – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,85 +15,54 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        Check your feedback answers
-      </h1>
+      <form class="form" action="/contact-details" method="post">
 
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Reference number
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['reference-number'] }}
-          </dd>
+        <div class="govuk-form-group">
+          {{ govukCheckboxes({
+            idPrefix: "contact-preference",
+            name: "contact-preference",
+            fieldset: {
+              legend: {
+                text: "How would you like us to contact you?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "email",
+                text: "Contact me by email",
+                conditional: {
+                  html: govukInput({
+                    id: "email",
+                    name: "email",
+                    label: {
+                      text: "Give your email address"
+                    }
+                  })
+                }
+              },
+              {
+                value: "phone",
+                text: "Contact me by phone",
+                conditional: {
+                  html: govukInput({
+                    id: "phone",
+                    name: "phone",
+                    label: {
+                      text: "Give your phone number"
+                    }
+                  })
+                }
+              }
+            ]
+          }) }}
         </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            How satisfied are you with the service you received?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['satisfaction'] }}
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            How easy was it to get the help you needed?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['ease'] }}
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            How could we improve?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['improvement-suggestions'] }}
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Would you like to be contacted by one of our researchers about your experience?
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['contact-preference'] }}
-          </dd>
-        </div>
-        {% if data['contact-preference'].includes('email') %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Email
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['email'] }}
-            </dd>
-          </div>
-        {% endif %}
-        {% if data['contact-preference'].includes('phone') %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Phone
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['phone'] }}
-            </dd>
-          </div>
-        {% endif %}
-      </dl>
 
-      <h2 class="govuk-heading-m">
-        Now send your application
-      </h2>
-
-      <p>
-        By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.
-      </p>
-
-      <form action="/confirmation" method="post" novalidate>
         {{ govukButton({
-          text: "Accept and send"
+          text: "Continue"
         }) }}
+
       </form>
 
     </div>

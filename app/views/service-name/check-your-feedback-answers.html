@@ -60,27 +60,25 @@
             {{ data['contact-preference'] }}
           </dd>
         </div>
-        {% if data['contact-preference'] == 'yes' %}
-          {% if data['email'] %}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Email
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data['email'] }}
-              </dd>
-            </div>
-          {% endif %}
-          {% if data['phone'] %}
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Phone
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data['phone'] }}
-              </dd>
-            </div>
-          {% endif %}
+        {% if data['contact-preference'].includes('email') %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Email
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['email'] }}
+            </dd>
+          </div>
+        {% endif %}
+        {% if data['contact-preference'].includes('phone') %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Phone
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['phone'] }}
+            </dd>
+          </div>
         {% endif %}
       </dl>
 
